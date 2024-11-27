@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cable Network Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+        }
+        .sidebar {
+            background-color: #4b6cc1;
+            color: #fff;
+            width: 250px;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+        }
+        .sidebar h1 {
+            font-size: 24px;
+        }
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            margin-top: 20px;
+        }
+        .main {
+            margin-left: 270px;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        .customer-details, .transactions {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .customer-details table, .transactions table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .customer-details td, .transactions th, .transactions td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        .transactions th {
+            text-align: left;
+            background-color: #f4f6fb;
+        }
+        .transactions .done-btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>LOGO</h1>
+        <a href="#">User Dashboard</a>
+    </div>
+
+    <div class="main">
+        <div class="header">
+            <h1>Cable Network</h1>
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+        </div>
+
+        <div class="customer-details">
+            <h2>Customer Details</h2>
+            <table>
+                <tr>
+                    <td><strong>Box ID:</strong></td>
+                    <td id="box-id">21457666627</td>
+                </tr>
+                <tr>
+                    <td><strong>Name:</strong></td>
+                    <td id="customer-name">Surya</td>
+                </tr>
+                <tr>
+                    <td><strong>Area:</strong></td>
+                    <td id="area">Kendriya</td>
+                </tr>
+                <tr>
+                    <td><strong>Phone Number:</strong></td>
+                    <td id="phone-number">8575748758</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="transactions">
+            <h2>Previous Transactions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SL No</th>
+                        <th>Package</th>
+                        <th>Month</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Due</th>
+                        <th>Transaction</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-table">
+                    <!-- Rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const transactions = [
+            { id: 1, package: 'All Telugu', month: 'October', date: '2023-10-08', amount: 330, due: 0 },
+            { id: 2, package: 'All Telugu', month: 'November', date: '2023-11-05', amount: 330, due: 0 },
+            { id: 3, package: 'All Telugu', month: 'December', date: '2023-12-04', amount: 330, due: 0 },
+            { id: 4, package: 'All Telugu', month: 'January', date: '2024-01-03', amount: 330, due: 0 },
+            { id: 5, package: 'All Telugu', month: 'February', date: '2024-02-04', amount: 330, due: 0 },
+        ];
+
+        const transactionTable = document.getElementById('transaction-table');
+
+        transactions.forEach((transaction) => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${transaction.id}</td>
+                <td>${transaction.package}</td>
+                <td>${transaction.month}</td>
+                <td>${transaction.date}</td>
+                <td>${transaction.amount}</td>
+                <td>${transaction.due}</td>
+                <td><button class="done-btn">Done</button></td>
+            `;
+
+            transactionTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>
